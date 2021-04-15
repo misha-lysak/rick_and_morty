@@ -1,10 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.scss';
+import { getHaracters } from './api';
+import { CardList } from './components/CardList';
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    getHaracters()
+      .then(setCharacters);
+  }, []);
+
+  console.log(characters);
   return (
     <div className="App">
-      hello world
+      <CardList characters={characters} />
     </div>
   );
 }
