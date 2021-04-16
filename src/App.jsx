@@ -58,16 +58,21 @@ function App() {
   return (
     <div className="App">
       <div className="find-person">
-        <label htmlFor="search" />
-        <input
-          className='find-person__input'
-          type="text"
-          name="search"
-          id="search" 
-          placeholder="Find person"
-          value={searchPerson}
-          onChange={handleChange}
-        />
+        <Route
+          path="/"
+          exact
+          >
+          <label htmlFor="search" />
+          <input
+            className='find-person__input'
+            type="text"
+            name="search"
+            id="search" 
+            placeholder="Find person"
+            value={searchPerson}
+            onChange={handleChange}
+          />
+        </Route>
       </div>
         <CardList
           characters={paginationCharacters}
