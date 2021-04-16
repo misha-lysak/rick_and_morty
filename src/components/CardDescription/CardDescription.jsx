@@ -1,7 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import './CardDescription.scss';
+
 import { Link } from 'react-router-dom';
+
+import './CardDescription.scss';
+
 import { EditCard } from '../EditCard/EditCard';
 
 export const CardDescription = ({ selectedCard, onSubmit, onDelete }) => {
@@ -19,7 +22,7 @@ export const CardDescription = ({ selectedCard, onSubmit, onDelete }) => {
   const handleOpenEdit = useCallback(
     () => {
       setIsOpenEdit(prevState => !prevState)
-    }, []
+    }, [],
   )
 
   return (

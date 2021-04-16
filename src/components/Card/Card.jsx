@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './Card.scss';
 
 export const Card = ({ character, handleSelect }) => {
-  console.log('hello');
   return (
     <div
       onClick={() => handleSelect(character.id)}

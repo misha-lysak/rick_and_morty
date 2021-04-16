@@ -1,6 +1,28 @@
 .card-list {
   display: flex;
-  overflow-x: hidden;
+  justify-content: center;
   padding: 30px;
   gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 15px;
+  
+  width: 700px;
+  gap: 10px;
+
+  border-radius: 5px;
+  
+  font-size: 1.6rem;
+  list-style-type: none;
+  font-weight: bold;
+  background-color: rgba(11, 145, 33, 0.247);
+}
+
+.pagination > * > * {
+  color: rgb(78, 77, 4);
+  text-decoration: none;
 }

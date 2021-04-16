@@ -13,7 +13,7 @@ export const EditCard = ({ character, handleOpenEdit, handleSubmit }) => {
         ...prevState,
         [name]: value
       }))
-    }, []
+    }, [],
   )
 
   return (

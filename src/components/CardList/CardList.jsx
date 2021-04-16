@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '../Card';
 import './CardList.scss';
+
+import { Card } from '../Card';
 import { CardDescription } from '../CardDescription';
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -19,14 +20,15 @@ export const CardList = ({ characters, onSubmit, onDelete }) => {
 
   useEffect(() => {
       setSelectedCard(characters.find(character => character.id === selectedCardId));
-  }, [selectedCardId]);
+  }, [selectedCardId, selectedCard]);
 
   return (
     <>
       <Route path="/" exact>
         <div className="card-list">
+        
           {characters.map((character) => (
-            <Link key={character.id * new Date()} to={`/${character.name}`} >
+            <Link key={character.id + 'a'} to={`/${character.name}`} >
               <Card
                 key={character.id}
                 character={character}
@@ -37,7 +39,7 @@ export const CardList = ({ characters, onSubmit, onDelete }) => {
         </div>
       </Route>
       {selectedCard ? (
-        <Route path={`/${selectedCard.name}`}>
+        <Route path={`/${selectedCard.name}`} exact>
           <CardDescription
             selectedCard={selectedCard}
             onSubmit={onSubmit}
