@@ -3,6 +3,7 @@ import './App.scss';
 import { getHaracters } from './api';
 import { CardList } from './components/CardList';
 import Pagination from 'react-responsive-pagination';
+import { Route } from 'react-router';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -73,12 +74,17 @@ function App() {
           onSubmit={onSubmit}
           onDelete={onDelete}
         />
+        <Route
+          path="/"
+          exact
+        >
         <Pagination
           current={currPage}
           total={characters.length - 4}
           onPageChange={setCurrPage}
           className='pagination'
         />
+        </Route>
       </div>
   );
 }
