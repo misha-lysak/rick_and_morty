@@ -4,14 +4,10 @@ import './Card.scss';
 
 export const Card = ({ character, handleSelect }) => {
   console.log('hello');
-
   return (
     <div
       onClick={() => handleSelect(character.id)}
-      onKeyUp={() => handleSelect(character.id)}
       className="card"
-      role="button"
-      tabIndex={0}
     >
       <img className="card__img" src={character.image} alt={character.name} />
       <p className="card__name">{character.name}</p>

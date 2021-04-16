@@ -12,13 +12,13 @@ export const getHaracters = () => (
     .then((response) => response.results)
 );
 
-export const getPerson = (id) => (
-  fetch(`${BASE_URL}/character/${id}`)
-    .then((response) => {
-      if (!response) {
-        throw new Error('wrong id of person');
-      }
+// export const getPerson = (id) => (
+//   fetch(`${BASE_URL}/character/${id}`)
+//     .then((response) => {
+//       if (!response) {
+//         throw new Error('wrong id of person');
+//       }
 
-      return response.json();
-    })
-);
+//       return response.json();
+//     })
+// );

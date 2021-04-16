@@ -3,39 +3,47 @@ import PropTypes from 'prop-types';
 import { Card } from '../Card';
 import './CardList.scss';
 import { CardDescription } from '../CardDescription';
-import { getPerson } from '../../api';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export const CardList = ({ characters }) => {
+export const CardList = ({ characters, onSubmit, onDelete }) => {
   const [selectedCardId, setSelectedCardId] = useState(0);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  console.log('list', characters);
   const handleSelect = useCallback(
     (id) => {
       setSelectedCardId(id);
       setSelectedCard(characters.find((character) => character.id === setSelectedCardId));
-      console.log('id =====', id);
-    }, [],
+    }, [selectedCardId],
   );
 
   useEffect(() => {
-    getPerson(selectedCardId)
-      .then(setSelectedCard);
+      setSelectedCard(characters.find(character => character.id === selectedCardId));
   }, [selectedCardId]);
 
   return (
     <>
-      <div className="card-list">
-        {characters.map((character) => (
-          <Card
-            key={character.id}
-            character={character}
-            handleSelect={handleSelect}
+      <Route path="/" exact>
+        <div className="card-list">
+          {characters.map((character) => (
+            <Link key={character.id * new Date()} to={`/${character.name}`} >
+              <Card
+                key={character.id}
+                character={character}
+                handleSelect={handleSelect}
+              />
+            </Link>
+          ))}
+        </div>
+      </Route>
+      {selectedCard ? (
+        <Route path={`/${selectedCard.name}`}>
+          <CardDescription
+            selectedCard={selectedCard}
+            onSubmit={onSubmit}
+            onDelete={onDelete}
           />
-        ))}
-      </div>
-      {selectedCard !== null ? (
-        <CardDescription selectedCard={selectedCard} />
+        </Route>
       ) : ''}
     </>
   );
@@ -46,4 +54,6 @@ CardList.propTypes = {
     PropTypes.shape({
     }),
   ).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
