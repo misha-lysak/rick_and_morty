@@ -9,12 +9,23 @@ export const EditCard = ({ character, handleOpenEdit, handleSubmit }) => {
     (event) => {
       const { name, value } = event.target;
 
+      if (name === 'location') {
+        setEditingCharacter(prevState => ({
+          ...prevState,
+          location: {
+            'name': value
+          },
+        }))
+      }
+
       setEditingCharacter(prevState => ({
         ...prevState,
         [name]: value
       }))
+
     }, [],
   )
+  console.log(editingCharacter);
 
   return (
     <form
