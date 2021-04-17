@@ -16,12 +16,14 @@ export const EditCard = ({ character, handleOpenEdit, handleSubmit }) => {
             'name': value
           },
         }))
+      } else {
+        setEditingCharacter(prevState => ({
+          ...prevState,
+          [name]: value
+        }))
       }
 
-      setEditingCharacter(prevState => ({
-        ...prevState,
-        [name]: value
-      }))
+      
 
     }, [],
   )
